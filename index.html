@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>특별실 예약</title>
+  <link rel="stylesheet" href="/project/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>특별실 예약</h1>
+
+    <div class="row" style="margin:8px 0 16px">
+      <button class="btn" id="loginBtn">Google 로그인</button>
+      <button class="btn" id="logoutBtn" style="display:none">로그아웃</button>
+      <span class="muted" style="margin-left:8px" id="whoami">로그인하지 않음</span>
+      <span class="muted" style="margin-left:8px" id="modeHint">모드: guest</span>
+    </div>
+
+    <!-- 학생 제출 -->
+    <div class="card" id="studentSubmitCard" style="display:none">
+      <div class="title">신규 예약 신청 (학생)</div>
+      <form id="submitForm" class="grid grid-2">
+        <label class="field">
+          <span>학번</span>
+          <input name="studentId" type="text" required />
+        </label>
+        <label class="field">
+          <span>이메일(로그인으로 자동)</span>
+          <input name="email" type="email" disabled value="" />
+        </label>
+        <label class="field">
+          <span>특별실</span>
+          <input name="room" type="text" placeholder="예: 화학실험실" required />
+        </label>
+        <label class="field">
+          <span>예약일</span>
+          <input name="date" type="date" required />
+        </label>
+        <label class="field">
+          <span>시작 시간</span>
+          <input name="start" type="time" required />
+        </label>
+        <label class="field">
+          <span>종료 시간</span>
+          <input name="end" type="time" required />
+        </label>
+        <label class="field span-2">
+          <span>사유</span>
+          <input name="reason" type="text" placeholder="사용 목적" />
+        </label>
+        <div class="row span-2">
+          <button class="btn" type="submit">신청하기</button>
+          <span id="submitMsg" class="muted"></span>
+        </div>
+      </form>
+    </div>
+
+    <!-- 공개 열람 -->
+    <div class="card">
+      <div class="title">예약 현황</div>
+      <div class="row" style="margin-bottom:10px">
+        <button class="btn" id="refreshBtn">새로고침</button>
+      </div>
+      <div id="sheetTable" class="muted">불러오는 중…</div>
+    </div>
+
+    <!-- 선생 전용 -->
+    <div class="card" id="teacherCard" style="display:none">
+      <div class="title">관리자(선생)</div>
+      <div id="adminTable" class="muted">—</div>
+    </div>
+  </div>
+
+  <!-- 중요: 모듈 로딩 -->
+  <script type="module" src="project/app.js"></script>
+</body>
+</html>
