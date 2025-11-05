@@ -1,0 +1,14 @@
+{
+  "functions": { "source": "functions", "runtime": "nodejs20" },
+  "hosting": {
+    "public": "project",               // ← 여기!
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      { "source": "/list", "function": "list" },
+      { "source": "/submit", "function": "submit" },
+      { "source": "/admin/list", "function": "adminList" },
+      { "source": "/admin/decide", "function": "adminDecide" },
+      { "source": "**", "destination": "/index.html" }
+    ]
+  }
+}
